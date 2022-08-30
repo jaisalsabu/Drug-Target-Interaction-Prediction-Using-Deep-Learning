@@ -65,7 +65,6 @@ class Drug_Target_Prediction(object):
 
     def PLayer(self, size, filters, activation, initializer, regularizer_param):
         def f(input):
-            # model_p = Convolution1D(filters=filters, kernel_size=size, padding='valid', activity_regularizer=l2(regularizer_param), kernel_initializer=initializer, kernel_regularizer=l2(regularizer_param))(input)
             model_p = Convolution1D(filters=filters, kernel_size=size, padding='same', kernel_initializer=initializer,
                                     kernel_regularizer=l2(regularizer_param))(input)
             model_p = BatchNormalization()(model_p)
@@ -247,21 +246,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="""
     This Python script is used to train, validate, test deep learning model for prediction of drug-target interaction (DTI)\n
     Deep learning model will be built by Keras with tensorflow.\n
-    You can set almost hyper-parameters as you want, See below parameter description\n
-    DTI, drug and protein data must be written as csv file format. And feature should be tab-delimited format for script to parse data.\n
-    Basically, this script builds convolutional neural network on sequence.\n
-    If you don't want convolutional neural network but traditional dense layers on provide protein feature, specify type of feature and feature length.\n
     \n
-    requirement\n
-    ============================\n
-    tensorflow > 1.0\n
-    keras > 2.0\n
-    numpy\n
-    pandas\n
-    scikit-learn\n
-    ============================\n
     \n
-    contact : dlsrnsladlek@gist.ac.kr\n
+    developer contact : jaisalsabu1703@gmail.com\n
     """)
     # train_params
     parser.add_argument("dti_dir", help="Training DTI information [drug, target, label]")
